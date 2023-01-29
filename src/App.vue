@@ -6,15 +6,15 @@ import SearchBar from './components/SearchBar.vue';
 import ProductionCard from './components/productions/ProductionCard.vue'
 export default {
   name: 'Boolflix',
-  components: {SearchBar, ProductionCard},
-  data(){
+  components: { SearchBar, ProductionCard },
+  data() {
     return {
       store,
-      titleFilter: ''
+      titleFilter: '',
     }
   },
   computed: {
-    axiosConfig(){
+    axiosConfig() {
       const { key, language } = api;
       return {
         params: {
@@ -26,24 +26,24 @@ export default {
     }
   },
   methods: {
-    onTitleFilter(term){
+    onTitleFilter(term) {
       this.titleFilter = term
     },
     searchProductions() {
-      if(!this.titleFilter){
-        this.movies = [];
-        this.series = [];
+      if (!this.titleFilter) {
+        store.movies = [];
+        store.series = [];
         return;
       }
 
       this.fetchApi('search/movie', 'movies');
       this.fetchApi('search/tv', 'series');
     },
-    fetchApi(endpoint, collection){
+    fetchApi(endpoint, collection) {
       axios.get(`${api.baseUri}/${endpoint}`, this.axiosConfig)
-      .then(res => {
-        store[collection] = res.data.results;
-      }).catch(err => {console.error(err)});
+        .then(res => {
+          store[collection] = res.data.results;
+        }).catch(err => { console.error(err) });
     }
 
   }
@@ -59,16 +59,17 @@ export default {
   <main>
     <section>
       <h2>Movies</h2>
-      <production-card v-for="movie in store.movies" :key="movie.id" :item="movie"></production-card>  
+      <production-card v-for="movie in store.movies" :key="movie.id" :item="movie">
+      </production-card>
     </section>
     <section>
       <h2>Series</h2>
-      <production-card v-for="serie in store.series" :key="serie.id" :item="series"></production-card> 
+      <production-card v-for="serie in store.series" :key="serie.id" :item="serie"></production-card>
     </section>
   </main>
- 
+
 </template>
 
 <style>
- 
+
 </style>
