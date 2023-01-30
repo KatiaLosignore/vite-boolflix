@@ -1,0 +1,12 @@
+
+@use './partials/variables' as *;
+
+body {
+    background-color: $grey;
+    height: 100vh;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}

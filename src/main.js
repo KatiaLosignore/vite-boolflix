@@ -1,18 +1,18 @@
-import { createApp } from 'vue'
+import { createApp } from 'vue';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
-import { faStar as faStarVoid} from '@fortawesome/free-regular-svg-icons';
+import { faStar as solidStar} from '@fortawesome/free-solid-svg-icons';
+import { faStar as regularStar} from '@fortawesome/free-regular-svg-icons';
 
-library.add(faStar, faStarVoid);
+library.add(solidStar, regularStar);
 
 
-import App from './App.vue'
+import App from './App.vue';
 
-const app = createApp(App);
+const app = createApp(App)
 
 app.component('font-awesome-icon', FontAwesomeIcon);
 
-app.mount('#app')
+app.mount('#app');
 
